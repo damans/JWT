@@ -12,7 +12,7 @@ var config = require('./config'); // get our config file
 var User   = require('./models/user'); // get our mongoose model
 var userControler=require('./controllers/user');
   var passwordHash = require('password-hash');
- var projectController=require('./controllers/ProjectController'); 
+ var projectController=require('./controllers/Project'); 
  var taskController=require('./controllers/Task');
 // =======================
 // configuration =========
@@ -104,34 +104,7 @@ if(token)
 
 
 
-// route to show a random message (GET http://localhost:8080/api/)
-/*apiRoutes.post('/saveuser', function(req,res){		
 
-	console.log(req.body.name);
-	var hashed=passwordHash.generate(req.body.password);
-	var usr=new User({
-		email: req.body.email,
-		name: req.body.name,
-		password: hashed,
-		role: ['project admin', 'system admin']
-	});
-   console.log(usr);
-   console.log(passwordHash.verify(req.body.password,hashed));
-	usr.save(function (err){
-
-		if(err) { 
-           console.log('Error occured'+ err);
-           res.json({success:false, errorcode: err.code, message: err.errmsg });
-			//throw err;
-		}
-		else{
-
-		console.log('User saved successfully');
-
-		res.json({ success: true });
-		}
-	});
-});*/
 apiRoutes.get('/', function(req, res) {
   res.json({ message: 'Welcome to the coolest API on earth!' });
 });
@@ -156,7 +129,7 @@ apiRoutes.route('/Users')
 .get(userControler.getUsers);
 
 // apply the routes to our application with the prefix /api
-app.use('/api', apiRoutes);
+app.use('/api/V1', apiRoutes);
 
 
 // =======================

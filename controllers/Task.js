@@ -2,7 +2,7 @@
 
 var task=require('../models/task');
 var taskHistory= require('../models/Taskhistory');
-var projectCtrl=require('./ProjectController');
+var projectCtrl=require('./Project');
 exports.postTasks=function(req,res){
 /*  title: { type: String,  required: true},
      assignedto: { type: String, required: true},
