@@ -56,3 +56,19 @@ exports.getTasks=function(req,res){
 		res.json(tasks);
 	});
 };
+
+exports.getTasksByUserId=function(req,res){
+
+  task.find({assignedto: req.body.id})
+  .populate('projectid')
+  .exec(function(err, tasksRes){
+     if(err)
+     {
+      res.status(400).json({success:fasle, message: 'Problem finding task for user'});
+     }
+
+     res.json(tasksRes);
+
+  });
+};
+

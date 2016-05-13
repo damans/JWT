@@ -106,14 +106,14 @@ exports.getUsers=function(req,res){
 };
 
 exports.AuthenticateUser=function(req,res){
-
+    console.log('admin user'+ req.get('AdminUser'));
    if(req.get('AdminUser'))
    {
       console.log(config.adminuser + ","+  config.password);
    	  if(req.body.username==config.adminuser && req.body.password == config.password){
 
    	  	var token=jwt.sign({name:config.adminuser, ip:req.connection.remoteAddress},config.secret, {
-    					expiresInMinutes:1440 // expires in 24 hours
+    					expiresIn:1440 // expires in 24 hours
     			});
 
    	  	res.json({

@@ -8,7 +8,7 @@
       	duration: {type: Number, required: false},
       	expectedenddate: {type: Date, required:false},
       	actualcompletiondate: {type: Date, required: false}
-   */
+   /
 */
 var mongoose=require('mongoose');
 var project=require('../models/project');

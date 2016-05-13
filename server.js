@@ -6,6 +6,7 @@ var app         = express();
 var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var mongoose    = require('mongoose');
+var cors= require('cors');
 
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
@@ -27,6 +28,8 @@ app.use(bodyParser.json());
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
+
+app.use(cors());
 
 // =======================
 // routes ================
@@ -58,6 +61,10 @@ app.get('/setup', function (req, res ){
 
 // Get an instance of the router  for API routes
  var apiRoutes= express.Router();
+
+// server the static files.
+
+app.use(express.static('.'));
 
 // route to authenticate a user
 
